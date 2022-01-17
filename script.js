@@ -3,6 +3,7 @@ var generateBtn = document.querySelector("#generate");
 // defining function that generates password and displays on screen
 function writePassword() {
   var password = generatePassword();
+  console.log(password)
   console.log('password', password)
 
   var passwordText = document.querySelector("#password");
@@ -10,6 +11,26 @@ function writePassword() {
   passwordText.value = password;
 
 }
+
+// helper function to verify password conditions.
+function setupPasswordForGen(isPassUpperCase, isPassLowerCase, isPassNumericCase, isPassSpecialCase){
+  let password = ""
+  if(isPassUpperCase === 'yes'){
+    password = password + 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' 
+  }
+  if(isPassLowerCase === 'yes'){
+    password = password + 'abcdefghijklmnopqrstuvwxyz'
+  }
+  if(isPassNumericCase === 'yes'){
+    password = password + '1234567890' 
+  }
+  if(isPassSpecialCase === 'yes'){
+    password = password + '!@#$%^&*()'
+  }
+  console.log(password)
+  return password
+}
+
 // function that generates password based on  user passed in prompt
 function generatePassword() {
   var passLength = prompt ("How many characters would you like your password to be?") 
@@ -41,249 +62,12 @@ function generatePassword() {
   }
 
   // declaring password variable for use later
-  let password = ''
-
-  // password character type parameters
-  if (isPassUpperCase == "yes" && isPassLowerCase == "yes" && isPassSpecialCase == "yes" && isPassNumericCase == "yes") {
-    console.log ("uppercase yes")
-    
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(<)';
-
-    for (var i = 0; i < characters.length; i++) {
-      password += characters.charAt(Math.floor(Math.random() * characters.length))
-
-      if (i == passLength) {
-        break
-      }
-    }
-
-    return password
+  const passwordConstraints = setupPasswordForGen(isPassUpperCase, isPassLowerCase, isPassNumericCase, isPassSpecialCase)
+  let finalPassword = "";
+  for (var i = 0; i < passLength; i++) {
+    finalPassword = finalPassword +  passwordConstraints.charAt(Math.floor(Math.random() * passwordConstraints.length))
   }
-  if (isPassUpperCase == "yes" && isPassLowerCase == "yes" && isPassSpecialCase == "no" && isPassNumericCase == "no") {
-    console.log ("uppercase yes")
-    
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-
-    for (var i = 0; i < characters.length; i++) {
-      password += characters.charAt(Math.floor(Math.random() * characters.length))
-
-      if (i == passLength) {
-        break
-      }
-    }
-
-    return password
-  }
-  if (isPassUpperCase == "yes" && isPassLowerCase == "no" && isPassSpecialCase == "no" && isPassNumericCase == "no") {
-    console.log ("uppercase yes")
-    
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-    for (var i = 0; i < characters.length; i++) {
-      password += characters.charAt(Math.floor(Math.random() * characters.length))
-
-      if (i == passLength) {
-        break
-      }
-    }
-
-    return password
-  }
-  if (isPassUpperCase == "yes" && isPassLowerCase == "no" && isPassSpecialCase == "yes" && isPassNumericCase == "no") {
-    console.log ("uppercase yes")
-    
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*(<)';
-
-    for (var i = 0; i < characters.length; i++) {
-      password += characters.charAt(Math.floor(Math.random() * characters.length))
-
-      if (i == passLength) {
-        break
-      }
-    }
-
-    return password
-  }
-  if (isPassUpperCase == "yes" && isPassLowerCase == "no" && isPassSpecialCase == "no" && isPassNumericCase == "yes") {
-    console.log ("uppercase yes")
-    
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-
-    for (var i = 0; i < characters.length; i++) {
-      password += characters.charAt(Math.floor(Math.random() * characters.length))
-
-      if (i == passLength) {
-        break
-      }
-    }
-
-    return password
-  }
-  if (isPassUpperCase == "no" && isPassLowerCase == "yes" && isPassSpecialCase == "yes" && isPassNumericCase == "no") {
-    console.log ("uppercase yes")
-    
-    var characters = 'abcdefghijklmnopqrstuvwxyz!@#$%^&*(<)';
-
-    for (var i = 0; i < characters.length; i++) {
-      password += characters.charAt(Math.floor(Math.random() * characters.length))
-
-      if (i == passLength) {
-        break
-      }
-    }
-
-    return password
-  }
-  if (isPassUpperCase == "no" && isPassLowerCase == "yes" && isPassSpecialCase == "no" && isPassNumericCase == "yes") {
-    console.log ("uppercase yes")
-    
-    var characters = 'abcdefghijklmnopqrstuvwxyz1234567890s';
-
-    for (var i = 0; i < characters.length; i++) {
-      password += characters.charAt(Math.floor(Math.random() * characters.length))
-
-      if (i == passLength) {
-        break
-      }
-    }
-
-    return password
-  }
-  if (isPassUpperCase == "no" && isPassLowerCase == "no" && isPassSpecialCase == "yes" && isPassNumericCase == "yes") {
-    console.log ("uppercase yes")
-    
-    var characters = '!@#$%^&*()1234567890s';
-
-    for (var i = 0; i < characters.length; i++) {
-      password += characters.charAt(Math.floor(Math.random() * characters.length))
-
-      if (i == passLength) {
-        break
-      }
-    }
-
-    return password
-  }
-  if (isPassUpperCase == "no" && isPassLowerCase == "yes" && isPassSpecialCase == "no" && isPassNumericCase == "yes") {
-    console.log ("uppercase yes")
-    
-    var characters = 'abcdefghijklmnopqrstuvwxyz1234567890s';
-
-    for (var i = 0; i < characters.length; i++) {
-      password += characters.charAt(Math.floor(Math.random() * characters.length))
-
-      if (i == passLength) {
-        break
-      }
-    }
-
-    return password
-  }
-  if (isPassUpperCase == "no" && isPassLowerCase == "no" && isPassSpecialCase == "yes" && isPassNumericCase == "yes") {
-    console.log ("uppercase yes")
-    
-    var characters = '!@#$%^&*()1234567890s';
-
-    for (var i = 0; i < characters.length; i++) {
-      password += characters.charAt(Math.floor(Math.random() * characters.length))
-
-      if (i == passLength) {
-        break
-      }
-    }
-
-    return password
-  }
-  if (isPassUpperCase == "no" && isPassLowerCase == "yes" && isPassSpecialCase == "yes" && isPassNumericCase == "no") {
-    console.log ("uppercase yes")
-    
-    var characters = 'abcdefghijklmnopqrstuvwxyz!@#$%^&*()';
-
-    for (var i = 0; i < characters.length; i++) {
-      password += characters.charAt(Math.floor(Math.random() * characters.length))
-
-      if (i == passLength) {
-        break
-      }
-    }
-
-    return password
-  }
-  if (isPassUpperCase == "no" && isPassLowerCase == "no" && isPassSpecialCase == "no" && isPassNumericCase == "yes") {
-    console.log ("uppercase yes")
-    
-    var characters = '1234567890';
-
-    for (var i = 0; i < characters.length; i++) {
-      password += characters.charAt(Math.floor(Math.random() * characters.length))
-
-      if (i == passLength) {
-        break
-      }
-    }
-
-    return password
-  }
-  if (isPassUpperCase == "yes" && isPassLowerCase == "yes" && isPassSpecialCase == "yes" && isPassNumericCase == "no") {
-    console.log ("uppercase yes")
-    
-    var characters = 'abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-    for (var i = 0; i < characters.length; i++) {
-      password += characters.charAt(Math.floor(Math.random() * characters.length))
-
-      if (i == passLength) {
-        break
-      }
-    }
-
-    return password
-  }
-  if (isPassUpperCase == "yes" && isPassLowerCase == "yes" && isPassSpecialCase == "no" && isPassNumericCase == "yes") {
-    console.log ("uppercase yes")
-    
-    var characters = 'abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-    for (var i = 0; i < characters.length; i++) {
-      password += characters.charAt(Math.floor(Math.random() * characters.length))
-
-      if (i == passLength) {
-        break
-      }
-    }
-
-    return password
-  }
-  if (isPassUpperCase == "yes" && isPassLowerCase == "no" && isPassSpecialCase == "yes" && isPassNumericCase == "yes") {
-    console.log ("uppercase yes")
-    
-    var characters = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()';
-
-    for (var i = 0; i < characters.length; i++) {
-      password += characters.charAt(Math.floor(Math.random() * characters.length))
-
-      if (i == passLength) {
-        break
-      }
-    }
-
-    return password
-  }
-  if (isPassUpperCase == "no" && isPassLowerCase == "no" && isPassSpecialCase == "yes" && isPassNumericCase == "no") {
-    console.log ("uppercase yes")
-    
-    var characters = '!@#$%^&*()';
-
-    for (var i = 0; i < characters.length; i++) {
-      password += characters.charAt(Math.floor(Math.random() * characters.length))
-
-      if (i == passLength) {
-        break
-      }
-    }
-
-    return password
-  }
+  return finalPassword
 }
 // Add event listener to generate button that calls writePassword function when clicked
 generateBtn.addEventListener("click", writePassword);
