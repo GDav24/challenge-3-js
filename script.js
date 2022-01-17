@@ -48,7 +48,7 @@ function generatePassword() {
   var isPassNumericCase = prompt ("Would you like any numeric characters? yes or no")
   var isPassSpecialCase = prompt ("Would you like any special characters? yes or no")
 
-  console.log("things", isPassUpperCase, isPassLowerCase, isPassNumericCase, isPassSpecialCase)
+  console.log(isPassUpperCase, isPassLowerCase, isPassNumericCase, isPassSpecialCase)
 
   // while loop that redirects if user doesn't choose a character type
   while (isPassUpperCase == "no" && isPassLowerCase && "no" && isPassSpecialCase == "no" && isPassNumericCase == "no" ) {
@@ -58,7 +58,7 @@ function generatePassword() {
     isPassNumericCase = prompt ("Would you like any numeric characters? yes or no")
     isPassSpecialCase = prompt ("Would you like any special characters? yes or no")
 
-    console.log("things 2", isPassUpperCase, isPassLowerCase, isPassNumericCase, isPassSpecialCase)
+    console.log(isPassUpperCase, isPassLowerCase, isPassNumericCase, isPassSpecialCase)
   }
 
   // declaring password variable for use later
