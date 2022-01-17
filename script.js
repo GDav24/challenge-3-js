@@ -16,16 +16,16 @@ function writePassword() {
 function setupPasswordForGen(isPassUpperCase, isPassLowerCase, isPassNumericCase, isPassSpecialCase){
   let password = ""
   if(isPassUpperCase === 'yes'){
-    password = password + 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' 
+    password = password.concat('ABCDEFGHIJKLMNOPQRSTUVWXYZ') 
   }
   if(isPassLowerCase === 'yes'){
-    password = password + 'abcdefghijklmnopqrstuvwxyz'
+    password = password.concat('abcdefghijklmnopqrstuvwxyz')
   }
   if(isPassNumericCase === 'yes'){
-    password = password + '1234567890' 
+    password = password.concat('1234567890')
   }
   if(isPassSpecialCase === 'yes'){
-    password = password + '!@#$%^&*()'
+    password = password.concat('!@#$%^&*()')
   }
   console.log(password)
   return password
